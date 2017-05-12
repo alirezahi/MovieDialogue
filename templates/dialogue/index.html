@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello World</title>
+</head>
+<body>
+<div>asdfasd</div>
+    <ul>
+    {% for dialogue in latest_question_list %}
+        <li><a href="/polls/{{ dialogue.actors }}/">{{ dialogue.title }}</a></li>
+    {% endfor %}
+    </ul>
+</body>
+</html>
