@@ -24,33 +24,19 @@
                         <h3 class="title_header" style="">{{ dialogue.title }}</h3>
                     </div>
                     <div class="row">
-                    <div class="col-md-10">
-                        <div class="div_info_movie">
-                       <div class="more_information">Year : {{ dialogue.year }}</div>
-                        </div>
-                        <div class="div_info_movie">
-                       <div class="more_information">Country : {{ dialogue.country }}</div>
-                        </div>
-                        <div class="div_info_movie">
-                       <div class="more_information">Runtime : {{ dialogue.runtime }}</div>
-                        </div>
-                        {% for actor in dialogue.actors.all %}
-                            <div class="actor_div">
-                            {{ actor.name }}
-                            </div>
-                        {% endfor %}
-                        <div class="div_info_movie">
-                        <div class="plot_info">Plot : {{ dialogue.plot }}</div>
-                            </div>
-
-                    </div>
-                        <div class="col-md-2">
-                            <a href="http://google.com"><img class="movie_image" src="{{ dialogue.image }}" alt="{{ dialogue.title }}"></a>
+                        <div class="col-md-12">
+                            <a href="http://google.com"><img class="dialogue_pic" src="{{ dialogue.image }}" alt="{{ dialogue.title }}"></a>
                     </div>
                     </div>
 
                     <hr style="color:white">
-
+                    {% for dialogues in dialogue.dialogue_set.all %}
+                        <div class="col-md-3 dialogue_st">
+                            <p>Dialogue Text</p>
+                            <hr>
+                            {{ dialogues.content }}
+                        </div>
+                    {% endfor %}
                 </div>
             </div>
         {% endfor %}

@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello World</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="{% static "/style.css" %}" type="text/css">
+    <script type="text/javascript" src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="{% static "/jsfile.js" %}"></script>
+</head>
+<body>
+
+<div id="mainDiv">
+    <div class="row" id="movies">
+        <h1 style="margin:0 auto;">Movies</h1>
+    </div>
+<div class="row search_div">
+        <input id="movie_name_input" class="form-control col-md-10" type="text"/>
+    <button type="button" class="btn btn-success col-md-2">Search</button>
+    </div>
+<div id="result_search" class="row">
+
+</div>
+
+    </div>
+</body>
+</html>

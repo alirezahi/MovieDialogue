@@ -64,6 +64,9 @@ hr{
     text-align: right;
     color:rgba(1,1,1,0.5);
 }
+.div_movie_page{
+    text-align: right;
+}
 .div_info_movie{
     margin:5px;
     text-align: left;
@@ -73,6 +76,19 @@ hr{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 5px 0 rgba(0, 0, 0, 0.19);
     border-radius:5px;
     width:100%;
+}
+.title_div{
+    text-align:center;
+}
+.add_movie{
+    background-color:deepskyblue;
+    display: inline-block;
+    padding-right:5px;
+    padding-left:5px;
+    border-radius:5px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 3px 2px 0 rgba(0, 0, 0, 0.01);
+    font-size: 12px;
+    text-align:right;
 }
 .title_header{
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 3px 2px 0 rgba(0, 0, 0, 0.01);
@@ -95,4 +111,17 @@ hr{
     border-radius:5px;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 3px 2px 0 rgba(0, 0, 0, 0.01);
     font-size: 12px;
+}
+.dialogue_pic{
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 3px 2px 0 rgba(0, 0, 0, 0.01);
+}
+.dialogue_st{
+    background-color:rgba(256,256,256,0.6);
+    border-radius:5px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 3px 2px 0 rgba(0, 0, 0, 0.01);
+    padding:3px;
+    font-size:13px;
+}
+.search_div{
+    margin-bottom:10px;
 }
