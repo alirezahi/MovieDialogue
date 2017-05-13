@@ -23,17 +23,21 @@ class Country(models.Model):
         return self.name
 
 class Movie(models.Model):
+    imdb_id = models.CharField(max_length=30,default='0')
     title = models.CharField(max_length=300)
     year = models.IntegerField(default=0)
     image = models.CharField(max_length=1000)
+    plot = models.CharField(max_length=1000)
     actors = models.ManyToManyField(Actor)
     runtime = models.IntegerField(default=0)
     genre = models.ManyToManyField(Genre)
+    country = models.ManyToManyField(Country)
 
     def __str__(self):
         return self.title
 
 class Series(models.Model):
+    imdb_id = models.CharField(max_length=30,default='0')
     title = models.CharField(max_length=300)
     year = models.IntegerField(default=0)
     image = models.CharField(max_length=1000)

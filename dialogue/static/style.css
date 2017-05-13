@@ -1,0 +1,98 @@
+body{
+    background-color: #be93c5; /* For browsers that do not support gradients */
+    background: linear-gradient(to bottom right, #be93c5, #7bc6cc); /* Standard syntax */
+    background: -webkit-linear-gradient(left top, #be93c5, #7bc6cc); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(bottom right, #be93c5, #7bc6cc); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(bottom right, #be93c5, #7bc6cc); /* For Firefox 3.6 to 15 */
+    font-family: Arial, Helvetica, sans-serif;
+}
+#mainDiv{
+    margin:5%;
+    padding:2%;
+    border-radius:5px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 3px 2px 0 rgba(0, 0, 0, 0.01);
+    background-color:rgba(256,256,256,0.8);
+}
+#movies{
+    text-align : center;
+}
+.a{
+    border:1px solid black;
+    border-radius:3px;
+    margin:1px;
+}
+.movie_div{
+    margin:1px;
+    padding:10px;
+    border-radius:5px;
+    background-color: #00d2ff; /* For browsers that do not support gradients */
+    background: linear-gradient(to bottom right, #CB3066, #00d2ff); /* Standard syntax */
+    background: -webkit-linear-gradient(left top, #CB3066, #00d2ff); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(bottom right, #CB3066, #00d2ff); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(bottom right, #CB3066, #00d2ff); /* For Firefox 3.6 to 15 */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 5px 0 rgba(0, 0, 0, 0.19);
+}
+hr{
+    border:1px solid white;
+}
+.more_information{
+    background-color:lightgreen;
+    display: inline-block;
+    padding-right:5px;
+    padding-left:5px;
+    border-radius:5px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 3px 2px 0 rgba(0, 0, 0, 0.01);
+    font-size: 11px;
+}
+.movie_page{
+    background-color:red;
+    padding-right:5px;
+    padding-left:5px;
+    border-radius:5px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 3px 2px 0 rgba(0, 0, 0, 0.01);
+    font-size:12px;
+}
+.movie_page a {
+    text-decoration: none;
+    color:white !important;
+}
+.movie_page a:hover{
+
+}
+.div_info{
+    margin:5px;
+    text-align: right;
+    color:rgba(1,1,1,0.5);
+}
+.div_info_movie{
+    margin:5px;
+    text-align: left;
+    color:rgba(1,1,1,0.5);
+}
+.movie_image{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 5px 0 rgba(0, 0, 0, 0.19);
+    border-radius:5px;
+    width:100%;
+}
+.title_header{
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 3px 2px 0 rgba(0, 0, 0, 0.01);
+    background : rgba(256,256,256,0.5);
+    border-radius:5px;
+    padding:5px;
+    display: inline-block;
+}
+.background_style{
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 3px 2px 0 rgba(0, 0, 0, 0.01);
+    background : rgba(256,256,256,0.5);
+    border-radius:5px;
+    overflow: hidden;
+}
+.plot_info{
+    background-color:deepskyblue;
+    display: inline-block;
+    padding-right:5px;
+    padding-left:5px;
+    border-radius:5px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 3px 2px 0 rgba(0, 0, 0, 0.01);
+    font-size: 12px;
+}

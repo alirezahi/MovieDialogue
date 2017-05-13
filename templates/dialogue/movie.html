@@ -18,28 +18,34 @@
     </div>
     <div class="row" style="text-align:center">
         {% for dialogue in latest_question_list %}
-            <div class="col-md-4">
+            <div class="col-md-12">
                 <div class="movie_div">
                     <div>
                         <h3 class="title_header" style="">{{ dialogue.title }}</h3>
                     </div>
                     <div class="row">
-                        <div class="col-md-6">
-                            <a href="http://google.com"><img class="movie_image" src="{{ dialogue.image }}" alt="{{ dialogue.title }}"></a>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="div_info">
+                    <div class="col-md-10">
+                        <div class="div_info_movie">
                        <div class="more_information">Year : {{ dialogue.year }}</div>
                         </div>
-                        <div class="div_info">
+                        <div class="div_info_movie">
                        <div class="more_information">Country : {{ dialogue.country }}</div>
                         </div>
-                        <div class="div_info">
+                        <div class="div_info_movie">
                        <div class="more_information">Runtime : {{ dialogue.runtime }}</div>
                         </div>
-                        <div class="div_movie_page">
-                       <div class="movie_page"><a href="{{ dialogue.link }}">Visit Movie Page</a></div>
-                        </div>
+                        {% for actor in dialogue.actors.all %}
+                            <div class="actor_div">
+                            {{ actor.name }}
+                            </div>
+                        {% endfor %}
+                        <div class="div_info_movie">
+                        <div class="plot_info">Plot : {{ dialogue.plot }}</div>
+                            </div>
+
+                    </div>
+                        <div class="col-md-2">
+                            <a href="http://google.com"><img class="movie_image" src="{{ dialogue.image }}" alt="{{ dialogue.title }}"></a>
                     </div>
                     </div>
 

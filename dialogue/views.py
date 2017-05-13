@@ -15,3 +15,14 @@ def index(request):
         'latest_question_list': latest_question_list,
     }
     return HttpResponse(template.render(context, request))
+
+def get_movie(request , imdb_id):
+    template = loader.get_template('dialogue/movie.html')
+    try:
+        m = Movie.objects.all().filter(imdb_id = str(imdb_id))
+        context = {
+            'latest_question_list': m,
+        }
+        return HttpResponse(template.render(context, request))
+    except:
+        return HttpResponse('<h1>Not Found Hah</h1>')
