@@ -3,8 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Hello World</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" type="text/css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
 </head>
 <body>
+{% load static %}
+<img src="{% static "/example.jpg" %}" alt="My image"/>
 <div>asdfasd</div>
     <ul>
     {% for dialogue in latest_question_list %}
