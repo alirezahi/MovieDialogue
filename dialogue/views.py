@@ -11,9 +11,11 @@ def detail(request, question_id):
 
 def index(request):
     latest_question_list = Movie.objects.all()
+    latest_series_list = Series.objects.all()
     template = loader.get_template('dialogue/index.html')
     context = {
         'latest_question_list': latest_question_list,
+        'series_list' : latest_series_list,
     }
     return HttpResponse(template.render(context, request))
 

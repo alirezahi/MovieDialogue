@@ -23,7 +23,7 @@
             <div class="col-md-4">
                 <div class="movie_div">
                     <div>
-                        <h3 class="title_header" style="">{{ dialogue.title }}</h3>
+                        <h6 class="title_header" style="">{{ dialogue.title }}</h6>
                     </div>
                     <div class="row">
                         <div class="col-md-6">
@@ -62,6 +62,58 @@
             </div>
         {% endfor %}
     </div>
+</div>
+    <hr>
+<div class="row" id="movies">
+        <h1 style="margin:0 auto;">TV-Series</h1>
+    </div>
+<div class="row">
+
+    <div class="row" style="text-align:center">
+        {% for dialogue in series_list %}
+            <div class="col-md-4">
+                <div class="movie_div">
+                    <div>
+                        <h6 class="title_header" style="">{{ dialogue.title }}</h6>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <a href="http://google.com"><img class="movie_image" src="{{ dialogue.image }}" alt="{{ dialogue.title }}"></a>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="div_info">
+                       <div class="more_information">Year : {{ dialogue.year }}</div>
+                        </div>
+                        <div class="div_info">
+                       <div class="more_information">Country :
+                           {% for country_element in dialogue.country.all %}
+                               {{ country_element.name }}
+                           {% endfor %}
+                       </div>
+                        </div>
+                        <div class="div_info">
+                       <div class="more_information">Runtime : {{ dialogue.runtime }}</div>
+                        </div>
+                    <div class="div_info">
+                    <div class="more_information"><p class="actor_main">Actors</p>
+                           {% for actor_element in dialogue.actors.all %}
+                               <a href="actor/{{ actor_element.link }}"class="actor">{{ actor_element.name }}</a>
+                           {% endfor %}
+                       </div>
+                    </div>
+                        <div class="div_movie_page">
+                       <div class="movie_page"><a href="getSeries/{{ dialogue.imdb_id }}">Visit Tv-Series Page</a></div>
+                        </div>
+                    </div>
+                    </div>
+
+                    <hr style="color:white">
+
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
 </div>
 </body>
 </html>

@@ -22,7 +22,7 @@ body{
     margin:1px;
 }
 .movie_div{
-    margin:1px;
+    margin:10px;
     padding:10px;
     border-radius:5px;
     background-color: #00d2ff; /* For browsers that do not support gradients */
@@ -95,7 +95,7 @@ hr{
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 3px 2px 0 rgba(0, 0, 0, 0.01);
     background : rgba(256,256,256,0.5);
     border-radius:5px;
-    padding:5px;
+    padding:10px;
     display: inline-block;
 }
 .background_style{
