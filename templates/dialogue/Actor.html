@@ -17,7 +17,7 @@
         <h1 style="margin:0 auto;">Movies</h1>
     </div>
     <div class="row" style="text-align:center">
-        {% for movie in movies %}
+        {% for movie in movie_actor %}
             <div class="col-md-12">
                 <div class="movie_div">
                     <div>
@@ -29,16 +29,12 @@
                        <div class="more_information">Year : {{ movie.year }}</div>
                         </div>
                         <div class="div_info_movie">
-                       <div class="more_information">Country :
-                        {% for country_element in movie.country.all %}
-                               {{ country_element.name }}
-                           {% endfor %}
-                       </div>
+                       <div class="more_information">Country : {{ movie.country }}</div>
                         </div>
                         <div class="div_info_movie">
                        <div class="more_information">Runtime : {{ movie.runtime }}</div>
                         </div>
-                     <div class="div_info_movie">
+                        <div class="div_info_movie">
                     <div class="more_information"><p class="actor_main">Actors</p>
                     {% for actor in movie.actors.all %}
                             <div class="actor_div">
@@ -47,7 +43,6 @@
                         {% endfor %}
                        </div>
                     </div>
-
                         <div class="div_info_movie">
                         <div class="plot_info">Plot : {{ movie.plot }}</div>
                             </div>

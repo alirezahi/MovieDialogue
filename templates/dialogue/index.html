@@ -46,12 +46,12 @@
                     <div class="div_info">
                     <div class="more_information"><p class="actor_main">Actors</p>
                            {% for actor_element in dialogue.actors.all %}
-                               <p class="actor">{{ actor_element.name }}</p>
+                               <a href="actor/{{ actor_element.link }}"class="actor">{{ actor_element.name }}</a>
                            {% endfor %}
                        </div>
                     </div>
                         <div class="div_movie_page">
-                       <div class="movie_page"><a href="{{ dialogue.link }}">Visit Movie Page</a></div>
+                       <div class="movie_page"><a href="getMovie/{{ dialogue.imdb_id }}">Visit Movie Page</a></div>
                         </div>
                     </div>
                     </div>

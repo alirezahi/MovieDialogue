@@ -12,6 +12,7 @@ class Genre(models.Model):
 
 class Actor(models.Model):
     name = models.CharField(max_length=70)
+    link = models.CharField(max_length=90)
 
     def __str__(self):
         return self.name

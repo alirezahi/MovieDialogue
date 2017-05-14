@@ -22,7 +22,20 @@ def get_movie(request , imdb_id):
     try:
         m = Movie.objects.all().filter(imdb_id = str(imdb_id))
         context = {
-            'latest_question_list': m,
+            'movies': m,
+        }
+        return HttpResponse(template.render(context, request))
+    except:
+        return HttpResponse('<h1>Not Found Hah</h1>')
+
+def get_actor(request, actor_name):
+    actor_name = actor_name.replace('20',' ')
+    template = loader.get_template('dialogue/actor.html')
+    try:
+        actor_obj = Actor.objects.all().filter(name=actor_name)
+        m = Movie.objects.all().filter(actors=actor_obj)
+        context = {
+            'movie_actor': m,
         }
         return HttpResponse(template.render(context, request))
     except:
@@ -73,7 +86,7 @@ def get_ajax(request , imdb_id):
             try:
                 a = Actor.objects.get(name=actor_name.strip())
             except:
-                a = Actor(name=actor_name.strip())
+                a = Actor(name=actor_name.strip(),link=str(actor_name.strip().replace(' ','20')))
                 a.save()
             m.actors.add(a)
         for country_name in data['Country'].split(','):
