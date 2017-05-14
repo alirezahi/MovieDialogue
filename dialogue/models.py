@@ -40,12 +40,14 @@ class Movie(models.Model):
 class Series(models.Model):
     imdb_id = models.CharField(max_length=30,default='0')
     title = models.CharField(max_length=300)
-    year = models.IntegerField(default=0)
+    year = models.CharField(max_length=20)
     image = models.CharField(max_length=1000)
+    plot = models.CharField(max_length=1000)
     actors = models.ManyToManyField(Actor)
     genre = models.ManyToManyField(Genre)
-    runtime = models.IntegerField(default=0)
+    runtime = models.CharField(max_length=10)
     seasons = models.IntegerField(default=0)
+    country = models.ManyToManyField(Country)
 
     def __str__(self):
         return self.title

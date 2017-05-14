@@ -28,6 +28,17 @@ def get_movie(request , imdb_id):
     except:
         return HttpResponse('<h1>Not Found Hah</h1>')
 
+def get_series(request , imdb_id):
+    template = loader.get_template('dialogue/series.html')
+    try:
+        m = Series.objects.all().filter(imdb_id = str(imdb_id))
+        context = {
+            'series': m,
+        }
+        return HttpResponse(template.render(context, request))
+    except:
+        return HttpResponse('<h1>Not Found Hah</h1>')
+
 def get_actor(request, actor_name):
     actor_name = actor_name.replace('20',' ')
     template = loader.get_template('dialogue/actor.html')
@@ -55,51 +66,85 @@ def get_dialogue(request , imdb_id):
 
 
 def get_ajax(request , imdb_id):
+    url = 'http://www.omdbapi.com/?'
 
-    some_data_to_dump = {}
+    params = dict(
+        i=imdb_id
+    )
+    resp = requests.get(url=url, params=params)
+    data = json.loads(resp.text)
     try:
-        m = Movie.objects.get(imdb_id = imdb_id)
-        some_data_to_dump = {
-            'movie_name': m.title,
-            'status': 'failed',
-        }
+        if data['Type'] == 'movie':
+            m = Movie.objects.get(imdb_id = imdb_id)
+            some_data_to_dump = {
+                'movie_name': m.title,
+                'status': 'failed',
+            }
+        else:
+            m = Series.objects.get(imdb_id=imdb_id)
+            some_data_to_dump = {
+                'movie_name': m.title,
+                'status': 'failed',
+            }
     except:
+        if data['Type'] == 'movie':
+            m = Movie(imdb_id=imdb_id,title=data['Title'],year=data['Year'],image=data['Poster'],plot=data['Plot'],runtime=data['Runtime'])
+            m.save()
+            for genre_name in data['Genre'].split(','):
 
-        url = 'http://www.omdbapi.com/?'
+                try:
+                    a = Genre.objects.get(name=genre_name.strip())
+                except:
+                    a = Genre(name=genre_name.strip())
+                    a.save()
+                m.genre.add(a)
+            for actor_name in data['Actors'].split(','):
+                try:
+                    a = Actor.objects.get(name=actor_name.strip())
+                except:
+                    a = Actor(name=actor_name.strip(),link=str(actor_name.strip().replace(' ','20')))
+                    a.save()
+                m.actors.add(a)
+            for country_name in data['Country'].split(','):
+                try:
+                    a = Country.objects.get(name=country_name.strip())
+                except:
+                    a = Country(name=country_name.strip())
+                    a.save()
+                m.country.add(a)
+            some_data_to_dump = {
+                'movie_name': m.title,
+                'status': 'ok',
+            }
+        else:
+            m = Series(imdb_id=imdb_id, title=data['Title'], year=data['Year'], image=data['Poster'], plot=data['Plot'],runtime=data['Runtime'],seasons=data['totalSeasons'])
+            m.save()
+            for genre_name in data['Genre'].split(','):
 
-        params = dict(
-            i=imdb_id
-        )
-        resp = requests.get(url=url, params=params)
-        data = json.loads(resp.text)
-        m = Movie(imdb_id=imdb_id,title=data['Title'],year=data['Year'],image=data['Poster'],plot=data['Plot'],runtime=data['Runtime'])
-        m.save()
-        for genre_name in data['Genre'].split(','):
-
-            try:
-                a = Genre.objects.get(name=genre_name.strip())
-            except:
-                a = Genre(name=genre_name.strip())
-                a.save()
-            m.genre.add(a)
-        for actor_name in data['Actors'].split(','):
-            try:
-                a = Actor.objects.get(name=actor_name.strip())
-            except:
-                a = Actor(name=actor_name.strip(),link=str(actor_name.strip().replace(' ','20')))
-                a.save()
-            m.actors.add(a)
-        for country_name in data['Country'].split(','):
-            try:
-                a = Country.objects.get(name=country_name.strip())
-            except:
-                a = Country(name=country_name.strip())
-                a.save()
-            m.country.add(a)
-        some_data_to_dump = {
-            'movie_name': m.title,
-            'status': 'ok',
-        }
+                try:
+                    a = Genre.objects.get(name=genre_name.strip())
+                except:
+                    a = Genre(name=genre_name.strip())
+                    a.save()
+                m.genre.add(a)
+            for actor_name in data['Actors'].split(','):
+                try:
+                    a = Actor.objects.get(name=actor_name.strip())
+                except:
+                    a = Actor(name=actor_name.strip(), link=str(actor_name.strip().replace(' ', '20')))
+                    a.save()
+                m.actors.add(a)
+            for country_name in data['Country'].split(','):
+                try:
+                    a = Country.objects.get(name=country_name.strip())
+                except:
+                    a = Country(name=country_name.strip())
+                    a.save()
+                m.country.add(a)
+            some_data_to_dump = {
+                'movie_name': m.title,
+                'status': 'ok',
+            }
     data = json.dumps(some_data_to_dump)
     return HttpResponse(data,content_type='application/json')
 

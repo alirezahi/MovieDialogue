@@ -1,0 +1,69 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello World</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="{% static "/style.css" %}" type="text/css">
+    <script type="text/javascript" src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div id="mainDiv">
+    <div class="row" id="movies">
+        <h1 style="margin:0 auto;">TV-Series</h1>
+    </div>
+    <div class="row" style="text-align:center">
+        {% for movie in series %}
+            <div class="col-md-12">
+                <div class="movie_div">
+                    <div>
+                        <h3 class="title_header" style="">{{ movie.title }}</h3>
+                    </div>
+                    <div class="row">
+                    <div class="col-md-10">
+                        <div class="div_info_movie">
+                       <div class="more_information">Year : {{ movie.year }}</div>
+                        </div>
+                        <div class="div_info_movie">
+                       <div class="more_information">Country :
+                        {% for country_element in movie.country.all %}
+                               {{ country_element.name }}
+                           {% endfor %}
+                       </div>
+                        </div>
+                        <div class="div_info_movie">
+                       <div class="more_information">Runtime : {{ movie.runtime }}</div>
+                        </div>
+                     <div class="div_info_movie">
+                    <div class="more_information"><p class="actor_main">Actors</p>
+                    {% for actor in movie.actors.all %}
+                            <div class="actor_div">
+                            <a href="/dialogue/polls/actor/{{ actor.link }}" class="actor">{{ actor.name }}</a>
+                            </div>
+                        {% endfor %}
+                       </div>
+                    </div>
+
+                        <div class="div_info_movie">
+                        <div class="plot_info">Plot : {{ movie.plot }}</div>
+                            </div>
+
+                    </div>
+                        <div class="col-md-2">
+                            <a href="http://google.com"><img class="movie_image" src="{{ movie.image }}" alt="{{ movie.title }}"></a>
+                    </div>
+                    </div>
+
+                    <hr style="color:white">
+
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+</body>
+</html>
