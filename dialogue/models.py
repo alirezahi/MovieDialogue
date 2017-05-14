@@ -29,7 +29,7 @@ class Movie(models.Model):
     image = models.CharField(max_length=1000)
     plot = models.CharField(max_length=1000)
     actors = models.ManyToManyField(Actor)
-    runtime = models.IntegerField(default=0)
+    runtime = models.CharField(max_length=10)
     genre = models.ManyToManyField(Genre)
     country = models.ManyToManyField(Country)
 

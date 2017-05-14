@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Movie
+from .models import Movie,Genre,Country,Series,Actor
 from django.template import loader
-import json
+import json , requests
 # Create your views here.
 
 def detail(request, question_id):
@@ -43,12 +43,50 @@ def get_dialogue(request , imdb_id):
 
 def get_ajax(request , imdb_id):
 
+    some_data_to_dump = {}
+    try:
+        m = Movie.objects.get(imdb_id = imdb_id)
+        some_data_to_dump = {
+            'movie_name': m.title,
+            'status': 'failed',
+        }
+    except:
 
-    some_data_to_dump = {
-        'some_var_1': 'foo',
-        'some_var_2': 'bar',
-    }
+        url = 'http://www.omdbapi.com/?'
 
+        params = dict(
+            i=imdb_id
+        )
+        resp = requests.get(url=url, params=params)
+        data = json.loads(resp.text)
+        m = Movie(imdb_id=imdb_id,title=data['Title'],year=data['Year'],image=data['Poster'],plot=data['Plot'],runtime=data['Runtime'])
+        m.save()
+        for genre_name in data['Genre'].split(','):
+
+            try:
+                a = Genre.objects.get(name=genre_name.strip())
+            except:
+                a = Genre(name=genre_name.strip())
+                a.save()
+            m.genre.add(a)
+        for actor_name in data['Actors'].split(','):
+            try:
+                a = Actor.objects.get(name=actor_name.strip())
+            except:
+                a = Actor(name=actor_name.strip())
+                a.save()
+            m.actors.add(a)
+        for country_name in data['Country'].split(','):
+            try:
+                a = Country.objects.get(name=country_name.strip())
+            except:
+                a = Country(name=country_name.strip())
+                a.save()
+            m.country.add(a)
+        some_data_to_dump = {
+            'movie_name': m.title,
+            'status': 'ok',
+        }
     data = json.dumps(some_data_to_dump)
     return HttpResponse(data,content_type='application/json')
 

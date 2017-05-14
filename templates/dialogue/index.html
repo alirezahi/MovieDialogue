@@ -18,12 +18,6 @@
         <h1 style="margin:0 auto;">Movies</h1>
     </div>
 <div class="row">
-        <input id="movie_name_input" class="form-control col-md-4" type="text"/>
-    <button type="button" class="btn btn-success">Search</button>
-    </div>
-<div id="result_search" class="row">
-
-</div>
     <div class="row" style="text-align:center">
         {% for dialogue in latest_question_list %}
             <div class="col-md-4">
@@ -40,11 +34,22 @@
                        <div class="more_information">Year : {{ dialogue.year }}</div>
                         </div>
                         <div class="div_info">
-                       <div class="more_information">Country : {{ dialogue.country }}</div>
+                       <div class="more_information">Country :
+                           {% for country_element in dialogue.country.all %}
+                               {{ country_element.name }}
+                           {% endfor %}
+                       </div>
                         </div>
                         <div class="div_info">
                        <div class="more_information">Runtime : {{ dialogue.runtime }}</div>
                         </div>
+                    <div class="div_info">
+                    <div class="more_information"><p class="actor_main">Actors</p>
+                           {% for actor_element in dialogue.actors.all %}
+                               <p class="actor">{{ actor_element.name }}</p>
+                           {% endfor %}
+                       </div>
+                    </div>
                         <div class="div_movie_page">
                        <div class="movie_page"><a href="{{ dialogue.link }}">Visit Movie Page</a></div>
                         </div>
