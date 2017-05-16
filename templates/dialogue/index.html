@@ -1,9 +1,10 @@
+{% include 'dialogue/base.html' %}
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Hello World</title>
+    <title>Movie DataBase</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="{% static "/style.css" %}" type="text/css">
     <script type="text/javascript" src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
@@ -12,7 +13,6 @@
     <script type="text/javascript" src="{% static "/jsfile.js" %}"></script>
 </head>
 <body>
-
 <div id="mainDiv">
     <div class="row" id="movies">
         <h1 style="margin:0 auto;">Movies</h1>
@@ -27,7 +27,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-6">
-                            <a href="http://google.com"><img class="movie_image" src="{{ dialogue.image }}" alt="{{ dialogue.title }}"></a>
+                            <a href="getMovie/{{ dialogue.imdb_id }}"><img class="movie_image" src="{{ dialogue.image }}" alt="{{ dialogue.title }}"></a>
                     </div>
                     <div class="col-md-6">
                         <div class="div_info">

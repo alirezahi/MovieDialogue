@@ -145,3 +145,17 @@ hr{
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 3px 2px 0 rgba(0, 0, 0, 0.01);
     margin:2px;
 }
+.main_icon{
+    width:70px;
+    height:70px;
+    margin:10px;
+    border-radius:25px;
+    background-color:rgba(256,256,256,0.9);
+    text-align:center;
+    padding-top:23px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 3px 2px 0 rgba(0, 0, 0, 0.01);
+}
+#main_menu{
+    z-index:1000;
+    position:fixed;
+}
