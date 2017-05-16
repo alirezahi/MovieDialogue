@@ -6,7 +6,7 @@ function save_movie(input_id){
         url : "/dialogue/polls/dialogues/"+input_id,
         success: function(data1){
             if(data1['status'] == 'ok'){
-                text = 'Movie ' +data1['movie_name']+ ' added Successfully';
+                var text = 'Movie ' +data1['movie_name']+ ' added Successfully';
                 $('#response').html(text);
                 $('#response').addClass('btn-success');
                 $('#response').removeClass('btn-danger');
@@ -37,5 +37,7 @@ $(document).ready(function(){
 });
 })
 function send_dialogue(p,id_input){
-    $.get( "/dialogue/polls/getGet/", { p: p , imdb_id : id_input } )
+    $.get( "/dialogue/polls/getGet/", { p: p , imdb_id : id_input } );
+    var text = '<div class="col-md-3"> <div class="dialogue_st" style="margin:10px;padding:10px;"> <p>Dialogue Text</p> <hr> '+p+'</div> </div>'
+    $('#dialogue_div').append(text);
 }

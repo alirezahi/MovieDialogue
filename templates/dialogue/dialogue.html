@@ -35,7 +35,7 @@
                             <button class="btn btn-success col-md-2" onclick="send_dialogue($('#dialogue_text').val(),'{{ dialogue.imdb_id }}')">Add Dialogue</button>
                     </div>
                     <hr style="color:white">
-                <div class="row" style="padding:10px">
+                <div id ="dialogue_div" class="row" style="padding:10px">
                     {% for dialogues in dialogue.dialogue_set.all %}
                         <div class="col-md-3">
                             <div class="dialogue_st" style="margin:10px;padding:10px;">
