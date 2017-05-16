@@ -1,8 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Movie,Genre,Country,Series,Actor
+from .models import Movie,Genre,Country,Series,Actor,Dialogue
 from django.template import loader
 import json , requests
+import datetime
 # Create your views here.
 
 def detail(request, question_id):
@@ -153,3 +154,12 @@ def get_ajax(request , imdb_id):
 def search(request):
     template = loader.get_template('dialogue/Search.html')
     return HttpResponse(template.render())
+
+def get_get(request):
+
+    p = request.GET['p']
+    imdb_id = request.GET['imdb_id']
+    m = Movie.objects.get(imdb_id=imdb_id)
+    d = Dialogue(content=p,pub_date=datetime.datetime.now(),movie=m)
+    d.save()
+    return HttpResponse()

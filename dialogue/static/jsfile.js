@@ -18,3 +18,6 @@ $(document).ready(function(){
         });
 });
 })
+function send_dialogue(p,id_input){
+    $.get( "/dialogue/polls/getGet/", { p: p , imdb_id : id_input } )
+}

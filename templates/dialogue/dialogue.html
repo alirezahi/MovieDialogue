@@ -9,6 +9,7 @@
     <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="{% static "/jsfile.js" %}"></script>
 </head>
 <body>
 
@@ -28,15 +29,22 @@
                             <a href="http://google.com"><img class="dialogue_pic" src="{{ dialogue.image }}" alt="{{ dialogue.title }}"></a>
                     </div>
                     </div>
-
+                    <div class="row" style="padding:2%;">
+                            <input id="dialogue_text" class="form-control col-md-10" type="text">
+                            <button class="btn btn-success col-md-2" onclick="send_dialogue($('#dialogue_text').val(),'{{ dialogue.imdb_id }}')">Add Dialogue</button>
+                    </div>
                     <hr style="color:white">
+                <div class="row" style="padding:10px">
                     {% for dialogues in dialogue.dialogue_set.all %}
-                        <div class="col-md-3 dialogue_st">
+                        <div class="col-md-3">
+                            <div class="dialogue_st" style="margin:10px;padding:10px;">
                             <p>Dialogue Text</p>
                             <hr>
                             {{ dialogues.content }}
+                            </div>
                         </div>
                     {% endfor %}
+                </div>
                 </div>
             </div>
         {% endfor %}
