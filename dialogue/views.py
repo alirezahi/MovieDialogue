@@ -48,8 +48,10 @@ def get_actor(request, actor_name):
     try:
         actor_obj = Actor.objects.all().filter(name=actor_name)
         m = Movie.objects.all().filter(actors=actor_obj)
+        s = Series.objects.all().filter(actors=actor_obj)
         context = {
             'movie_actor': m,
+            'series_actor' : s,
         }
         return HttpResponse(template.render(context, request))
     except:
@@ -156,7 +158,6 @@ def search(request):
     return HttpResponse(template.render())
 
 def get_get(request):
-
     p = request.GET['p']
     imdb_id = request.GET['imdb_id']
     m = Movie.objects.get(imdb_id=imdb_id)
