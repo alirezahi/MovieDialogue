@@ -159,3 +159,13 @@ hr{
     z-index:1000;
     position:fixed;
 }
+.get_movie{
+    text-align:center;
+}
+.add_movie{
+    background:none;
+    border:none;
+}
+#response{
+    text-align:center;
+}
